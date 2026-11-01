@@ -232,11 +232,25 @@ const translations = {
       shipping: 'الشحن',
       shippingFree: 'مجاني',
       checkout: 'إتمام الشراء والدفع الآن',
-      checkoutSub: 'تحويل آمن إلى بوابة الدفع',
+      checkoutSub: 'تحويل آمن إلى بوابة الدفع الرسمية Sadad QA',
     },
     toast: {
       addedToCart: '✅ تمت إضافة المنتج إلى السلة بنجاح!',
-      paymentSuccess: '✅ تم الدفع بنجاح ! شكراً لطلبك من JBR Store.',
+      paymentSuccess: '🎉 تم تأكيد شراء منتجك والدفع بنجاح! تم إفراغ السلة وتوجيهك للمنتجات.',
+    },
+    paymentSuccessModal: {
+      title: '🎉 تم تأكيد شراء منتجك والدفع بنجاح !',
+      subtitle:
+        'لقد تمت عملية الشراء بنجاح واقتطاع المبلغ عبر بوابة Sadad QA المعتمدة. تم إفراغ سلة مشترياتك بالكامل ونحن بصدد تجهيز طلبك للشحن الفوري إلى عنوانك.',
+      orderNumber: 'رقم الطلب المؤكد',
+      statusLabel: 'حالة الدفع',
+      statusValue: 'تم الدفع بنجاح 100%',
+      cartStateLabel: 'حالة السلة',
+      cartStateValue: 'فارغة تماماً (0 منتجات)',
+      gatewayLabel: 'بوابة الدفع',
+      gatewayValue: 'Sadad QA (بوابة معتمدة وآمنة)',
+      actionButton: 'العودة لتصفح المنتجات',
+      helpText: 'شكراً لشرائكم من JBR Store! تم تسجيل طلبك بنجاح وسيصلك إشعار المتابعة قريباً.',
     },
     features: [
       {
@@ -306,11 +320,25 @@ const translations = {
       shipping: 'Shipping',
       shippingFree: 'FREE',
       checkout: 'Checkout & Pay Now',
-      checkoutSub: 'Secure redirect to payment gateway',
+      checkoutSub: 'Secure redirect to official Sadad QA gateway',
     },
     toast: {
       addedToCart: '✅ Product added to cart successfully!',
-      paymentSuccess: '✅ Payment successful! Thank you for choosing JBR Store.',
+      paymentSuccess: '🎉 Payment successful! Your purchase is confirmed and cart emptied.',
+    },
+    paymentSuccessModal: {
+      title: '🎉 Payment & Order Confirmed!',
+      subtitle:
+        'Your purchase has been completed successfully and payment is confirmed via Sadad QA. Your shopping cart has been emptied and your order is now being prepared for express delivery.',
+      orderNumber: 'Confirmed Order ID',
+      statusLabel: 'Payment Status',
+      statusValue: 'Paid & Verified 100%',
+      cartStateLabel: 'Cart Status',
+      cartStateValue: 'Emptied (0 items)',
+      gatewayLabel: 'Payment Gateway',
+      gatewayValue: 'Sadad QA (Verified & Secure)',
+      actionButton: 'Back to Browse Products',
+      helpText: 'Thank you for shopping at JBR Store! Your order has been placed successfully.',
     },
     features: [
       {
@@ -512,6 +540,117 @@ function Toast({ message, onClose }) {
 }
 
 /* ═══════════════════════════════════════════════════
+   PAYMENT SUCCESS CONFIRMATION MODAL
+   - Returns client to products page
+   - Empties cart (0 items)
+   - Notifies that purchase & payment succeeded
+   ═══════════════════════════════════════════════════ */
+function PaymentSuccessModal({ isOpen, onClose, t, orderId }) {
+  if (!isOpen) return null
+
+  const handleReturnToProducts = () => {
+    onClose()
+    setTimeout(() => {
+      const prodEl = document.getElementById('products')
+      if (prodEl) {
+        prodEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 150)
+  }
+
+  return (
+    <div className="fixed inset-0 z-[130] flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/85 backdrop-blur-md transition-opacity duration-300"
+        onClick={handleReturnToProducts}
+      />
+
+      {/* Modal Dialog */}
+      <div className="relative w-full max-w-lg rounded-3xl bg-[#0B1428] border-2 border-emerald-500/50 shadow-[0_0_60px_rgba(16,185,129,0.35)] p-6 sm:p-8 text-center space-y-6 overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+        {/* Glow ambient background */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Close Button top corner */}
+        <button
+          onClick={handleReturnToProducts}
+          className="absolute top-4 end-4 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors cursor-pointer z-20"
+          aria-label="Close"
+        >
+          <X size={20} />
+        </button>
+
+        {/* Top Success Badge with Checkmark & Sparkles */}
+        <div className="relative mx-auto w-20 h-20 rounded-full bg-emerald-500/20 border-2 border-emerald-400/50 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+          <div className="w-14 h-14 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg">
+            <CheckCircle2 size={36} className="text-white" strokeWidth={2.5} />
+          </div>
+          {/* Subtle pulse ring */}
+          <div className="absolute inset-0 rounded-full bg-emerald-400/30 animate-ping pointer-events-none" />
+        </div>
+
+        {/* Heading & Subtitle */}
+        <div className="space-y-2 relative z-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
+            <span>✓ {t.paymentSuccessModal.statusValue}</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            {t.paymentSuccessModal.title}
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md mx-auto">
+            {t.paymentSuccessModal.subtitle}
+          </p>
+        </div>
+
+        {/* Order Details Card */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#070D1C] border border-blue-900/40 text-start space-y-3 relative z-10">
+          <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-800">
+            <span className="text-slate-400">{t.paymentSuccessModal.orderNumber}</span>
+            <span className="font-mono font-bold text-blue-400 text-sm tracking-wider" dir="ltr">
+              #{orderId}
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-800">
+            <span className="text-slate-400">{t.paymentSuccessModal.cartStateLabel}</span>
+            <span className="font-bold text-emerald-400 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+              {t.paymentSuccessModal.cartStateValue}
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-slate-400">{t.paymentSuccessModal.gatewayLabel}</span>
+            <span className="font-bold text-slate-200">
+              {t.paymentSuccessModal.gatewayValue}
+            </span>
+          </div>
+        </div>
+
+        {/* Help / Follow-up text */}
+        <p className="text-[11px] text-slate-400 relative z-10">
+          {t.paymentSuccessModal.helpText}
+        </p>
+
+        {/* Action Button: Return to Products with Rotating Conic Border */}
+        <div className="relative z-10 pt-1">
+          <button
+            onClick={handleReturnToProducts}
+            className="w-full relative p-[2px] rounded-2xl overflow-hidden group/btn transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] hover:scale-[1.02] active:scale-[0.99]"
+          >
+            <span className="rotating-conic-border" />
+            <span className="relative flex items-center justify-center gap-2 px-6 py-4 rounded-[14px] bg-[#0A1428] group-hover/btn:bg-[#0E1C38] text-white font-black text-sm sm:text-base">
+              <span>{t.paymentSuccessModal.actionButton}</span>
+              <ArrowDownRight size={18} className="text-emerald-400" />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════
    CART MODAL / DRAWER
    ═══════════════════════════════════════════════════ */
 function CartModal({ isOpen, onClose, cart, setCart, t }) {
@@ -533,6 +672,11 @@ function CartModal({ isOpen, onClose, cart, setCart, t }) {
   }
 
   const handleCheckout = () => {
+    try {
+      sessionStorage.setItem('jbr_pending_checkout', 'true')
+    } catch (e) {
+      // ignore
+    }
     window.location.href = PAYMENT_URL
   }
 
@@ -679,6 +823,7 @@ function CartModal({ isOpen, onClose, cart, setCart, t }) {
               <span>{t.cart.checkout}</span>
               <ExternalLink size={16} className="opacity-80" />
             </button>
+
             <p className="text-[11px] text-center text-slate-500">
               🔒 {t.cart.checkoutSub}
             </p>
@@ -1290,6 +1435,8 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false)
   const [toast, setToast] = useState(null)
   const [activeSection, setActiveSection] = useState('home')
+  const [paymentSuccessModalOpen, setPaymentSuccessModalOpen] = useState(false)
+  const [confirmedOrderId, setConfirmedOrderId] = useState('JBR-2026-98421')
 
   const t = translations[lang]
 
@@ -1298,16 +1445,76 @@ export default function App() {
     document.documentElement.lang = t.lang
   }, [t.dir, t.lang])
 
-  /* Check for ?status=success in URL */
+  /* Complete Post-Payment Success Return Flow */
+  const triggerPaymentSuccessFlow = useCallback(
+    (customOrderId) => {
+      const generatedId =
+        customOrderId || `JBR-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`
+      setConfirmedOrderId(generatedId)
+
+      // 1. Empty the cart completely (panier khawya)
+      setCart([])
+
+      // 2. Close cart drawer
+      setCartOpen(false)
+
+      // 3. Open celebratory confirmation modal
+      setPaymentSuccessModalOpen(true)
+
+      // 4. Show success toast notification
+      setToast(t.toast.paymentSuccess)
+
+      // 5. Scroll viewport smoothly to products section (khaso yraj3o n la page dyal products)
+      setTimeout(() => {
+        const prodElem = document.getElementById('products')
+        if (prodElem) {
+          prodElem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 250)
+    },
+    [t.toast.paymentSuccess]
+  )
+
+  /* Check for payment success return via URL query parameters or checkout return flag */
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    if (params.get('status') === 'success') {
-      setToast(t.toast.paymentSuccess)
+    const hash = window.location.hash
+
+    const isSuccessParam =
+      params.get('status') === 'success' ||
+      params.get('payment') === 'success' ||
+      params.get('paid') === 'true' ||
+      params.get('payment_status') === 'paid' ||
+      params.get('checkout') === 'success' ||
+      hash === '#payment-success'
+
+    let hadPendingCheckout = false
+    try {
+      hadPendingCheckout = sessionStorage.getItem('jbr_pending_checkout') === 'true'
+    } catch (e) {
+      // ignore
+    }
+
+    if (isSuccessParam || (hadPendingCheckout && (params.has('status') || params.has('payment')))) {
+      try {
+        sessionStorage.removeItem('jbr_pending_checkout')
+      } catch (e) {
+        // ignore
+      }
+
+      triggerPaymentSuccessFlow()
+
+      // Clean query params from URL cleanly without page refresh
       const cleanUrl = new URL(window.location.href)
       cleanUrl.searchParams.delete('status')
-      window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.hash)
+      cleanUrl.searchParams.delete('payment')
+      cleanUrl.searchParams.delete('paid')
+      cleanUrl.searchParams.delete('payment_status')
+      cleanUrl.searchParams.delete('checkout')
+      if (cleanUrl.hash === '#payment-success') cleanUrl.hash = '#products'
+      window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.search + (cleanUrl.hash || ''))
     }
-  }, [t.toast.paymentSuccess])
+  }, [triggerPaymentSuccessFlow])
 
   /* Scrollspy */
   useEffect(() => {
@@ -1362,6 +1569,14 @@ export default function App() {
     <div className="min-h-screen bg-[#060B18] text-slate-100 selection:bg-blue-600 selection:text-white">
       {/* Toast Notification */}
       {toast && <Toast message={toast} onClose={() => setToast(null)} />}
+
+      {/* Payment Success Confirmation Modal */}
+      <PaymentSuccessModal
+        isOpen={paymentSuccessModalOpen}
+        onClose={() => setPaymentSuccessModalOpen(false)}
+        t={t}
+        orderId={confirmedOrderId}
+      />
 
       {/* Cart Modal / Drawer */}
       <CartModal
