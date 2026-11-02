@@ -236,10 +236,10 @@ const translations = {
     },
     toast: {
       addedToCart: '✅ تمت إضافة المنتج إلى السلة بنجاح!',
-      paymentSuccess: '🎉 تم تأكيد شراء منتجك والدفع بنجاح! تم إفراغ السلة وتوجيهك للمنتجات.',
+      paymentSuccess: '🎉 تم شراء المنتج بنجاح! تم إفراغ السلة وتوجيهك لصفحة المنتجات.',
     },
     paymentSuccessModal: {
-      title: '🎉 تم تأكيد شراء منتجك والدفع بنجاح !',
+      title: '🎉 تم شراء المنتج بنجاح وتم تأكيد الطلب !',
       subtitle:
         'لقد تمت عملية الشراء بنجاح واقتطاع المبلغ عبر بوابة Sadad QA المعتمدة. تم إفراغ سلة مشترياتك بالكامل ونحن بصدد تجهيز طلبك للشحن الفوري إلى عنوانك.',
       orderNumber: 'رقم الطلب المؤكد',
@@ -249,6 +249,7 @@ const translations = {
       cartStateValue: 'فارغة تماماً (0 منتجات)',
       gatewayLabel: 'بوابة الدفع',
       gatewayValue: 'Sadad QA (بوابة معتمدة وآمنة)',
+      purchasedItemsLabel: 'المنتجات التي تم شراؤها :',
       actionButton: 'العودة لتصفح المنتجات',
       helpText: 'شكراً لشرائكم من JBR Store! تم تسجيل طلبك بنجاح وسيصلك إشعار المتابعة قريباً.',
     },
@@ -274,6 +275,95 @@ const translations = {
         'JBR Store — وجهتك الأولى لأحدث الإلكترونيات والهواتف الذكية مع ضمان الجودة وسرعة التوصيل.',
       rights: '© {year} JBR Store. جميع الحقوق محفوظة.',
       securePayment: 'دفع آمن 100% مع Sadad',
+    },
+  },
+  fr: {
+    dir: 'ltr',
+    lang: 'fr',
+    brandSubtitle: 'Boutique d\'appareils électroniques',
+    nav: {
+      home: 'Accueil',
+      products: 'Produits',
+      cart: 'Panier',
+    },
+    langSwitch: 'English',
+    hero: {
+      pill: 'Offres Exclusives 2026 — Livraison Express Gratuite',
+      title1: 'Trouvez Vos',
+      titleHighlight: 'Meilleurs Appareils',
+      title2: 'au meilleur prix du marché',
+      subtitle:
+        'Notre sélection soignée vous offre des smartphones et accessoires technologiques de pointe avec des performances exceptionnelles et une garantie certifiée.',
+      cta: 'Nos Produits',
+      heroDeviceLabel: 'Samsung S21+ 5G & Xiaomi 20000 mAh',
+      findUsIn: 'Paiement & partenaires certifiés :',
+      partners: ['Sadad QA', 'Visa / Mastercard', 'Livraison Rapide'],
+    },
+    productsSection: {
+      tag: 'Le Plus Demandé',
+      title: 'Nos meilleurs produits du mois',
+      subtitle:
+        'Designs intelligents et caractéristiques de pointe pour votre quotidien numérique.',
+      badgeNew: 'Nouveau',
+      badgePopular: 'Top Vente',
+      addToCartBtn: 'Ajouter au Panier',
+      added: 'Ajouté au Panier ✓',
+      specsLabel: 'Spécifications principales :',
+    },
+    cart: {
+      title: 'Panier d\'achat',
+      itemsCount: 'articles',
+      empty: 'Votre panier est actuellement vide',
+      emptyDesc: 'Parcourez nos produits et ajoutez vos coups de cœur au panier !',
+      explore: 'Découvrir les produits',
+      unitPrice: 'Prix unitaire :',
+      total: 'Total Général',
+      shipping: 'Livraison',
+      shippingFree: 'GRATUITE',
+      checkout: 'Commander et Payer Maintenant',
+      checkoutSub: 'Redirection sécurisée vers la passerelle officielle Sadad QA',
+    },
+    toast: {
+      addedToCart: '✅ Produit ajouté au panier avec succès !',
+      paymentSuccess: '🎉 Produit acheté avec succès ! Votre commande est validée et le panier a été vidé.',
+    },
+    paymentSuccessModal: {
+      title: '🎉 Produit Acheté Avec Succès !',
+      subtitle:
+        'Votre achat a été effectué avec succès et le paiement est validé via Sadad QA. Votre panier a été vidé et votre commande est en cours de préparation pour une expédition express.',
+      orderNumber: 'Numéro de commande',
+      statusLabel: 'État du paiement',
+      statusValue: 'Payé et Validé 100%',
+      cartStateLabel: 'État du panier',
+      cartStateValue: 'Vidé (0 articles)',
+      gatewayLabel: 'Passerelle de paiement',
+      gatewayValue: 'Sadad QA (Passerelle sécurisée)',
+      purchasedItemsLabel: 'Articles achetés :',
+      actionButton: 'Retour aux produits',
+      helpText: 'Merci pour votre achat chez JBR Store ! Votre commande a été enregistrée avec succès.',
+    },
+    features: [
+      {
+        title: 'Livraison Express Gratuite',
+        desc: 'Livraison rapide à votre porte',
+        icon: FlaticonDeliveryTruck,
+      },
+      {
+        title: 'Garantie Complète 2 Ans',
+        desc: 'Couverture constructeur certifiée',
+        icon: FlaticonWarrantyShield,
+      },
+      {
+        title: 'Paiement 100% Sécurisé',
+        desc: 'Propulsé par Sadad QA',
+        icon: FlaticonSecurePayment,
+      },
+    ],
+    footer: {
+      about:
+        'JBR Store — Votre référence pour les derniers smartphones et accessoires technologiques au meilleur prix.',
+      rights: '© {year} JBR Store. Tous droits réservés.',
+      securePayment: 'Paiement 100% sécurisé avec Sadad',
     },
   },
   en: {
@@ -324,10 +414,10 @@ const translations = {
     },
     toast: {
       addedToCart: '✅ Product added to cart successfully!',
-      paymentSuccess: '🎉 Payment successful! Your purchase is confirmed and cart emptied.',
+      paymentSuccess: '🎉 Product purchased successfully! Your order is confirmed and cart emptied.',
     },
     paymentSuccessModal: {
-      title: '🎉 Payment & Order Confirmed!',
+      title: '🎉 Product Purchased Successfully!',
       subtitle:
         'Your purchase has been completed successfully and payment is confirmed via Sadad QA. Your shopping cart has been emptied and your order is now being prepared for express delivery.',
       orderNumber: 'Confirmed Order ID',
@@ -337,6 +427,7 @@ const translations = {
       cartStateValue: 'Emptied (0 items)',
       gatewayLabel: 'Payment Gateway',
       gatewayValue: 'Sadad QA (Verified & Secure)',
+      purchasedItemsLabel: 'Purchased Items:',
       actionButton: 'Back to Browse Products',
       helpText: 'Thank you for shopping at JBR Store! Your order has been placed successfully.',
     },
@@ -545,7 +636,7 @@ function Toast({ message, onClose }) {
    - Empties cart (0 items)
    - Notifies that purchase & payment succeeded
    ═══════════════════════════════════════════════════ */
-function PaymentSuccessModal({ isOpen, onClose, t, orderId }) {
+function PaymentSuccessModal({ isOpen, onClose, t, orderId, purchasedItems = [] }) {
   if (!isOpen) return null
 
   const handleReturnToProducts = () => {
@@ -567,7 +658,7 @@ function PaymentSuccessModal({ isOpen, onClose, t, orderId }) {
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-3xl bg-[#0B1428] border-2 border-emerald-500/50 shadow-[0_0_60px_rgba(16,185,129,0.35)] p-6 sm:p-8 text-center space-y-6 overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+      <div className="relative w-full max-w-lg rounded-3xl bg-[#0B1428] border-2 border-emerald-500/50 shadow-[0_0_60px_rgba(16,185,129,0.35)] p-6 sm:p-8 text-center space-y-5 overflow-hidden animate-in fade-in zoom-in-95 duration-300 max-h-[92vh] overflow-y-auto">
         {/* Glow ambient background */}
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -601,6 +692,34 @@ function PaymentSuccessModal({ isOpen, onClose, t, orderId }) {
             {t.paymentSuccessModal.subtitle}
           </p>
         </div>
+
+        {/* Purchased Items Card - Shows purchased products with photos and prices */}
+        {purchasedItems && purchasedItems.length > 0 && (
+          <div className="p-4 rounded-2xl bg-[#070D1C] border border-emerald-500/30 text-start space-y-2.5 relative z-10">
+            <div className="flex items-center justify-between text-xs text-emerald-400 font-bold border-b border-slate-800 pb-2">
+              <span>{t.paymentSuccessModal.purchasedItemsLabel || 'Articles achetés :'}</span>
+              <span>{purchasedItems.reduce((s, it) => s + (it.qty || 1), 0)} articles</span>
+            </div>
+            <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
+              {purchasedItems.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                  {item.image && (
+                    <img src={item.image} alt={item.name} className="w-11 h-11 rounded-lg object-cover bg-slate-800 border border-slate-700/50 shrink-0" />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-bold text-white truncate">{item.name}</p>
+                    <p className="text-[11px] text-slate-400">
+                      {item.qty} × <span className="text-blue-400 font-bold">${item.price}</span>
+                    </p>
+                  </div>
+                  <span className="text-xs font-extrabold text-emerald-400 shrink-0">
+                    ${(item.price * (item.qty || 1)).toLocaleString()}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Order Details Card */}
         <div className="p-4 sm:p-5 rounded-2xl bg-[#070D1C] border border-blue-900/40 text-start space-y-3 relative z-10">
@@ -673,6 +792,14 @@ function CartModal({ isOpen, onClose, cart, setCart, t }) {
 
   const handleCheckout = () => {
     try {
+      const orderData = {
+        items: [...cart],
+        total,
+        orderId: `JBR-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`,
+        timestamp: Date.now(),
+      }
+      localStorage.setItem('jbr_pending_order', JSON.stringify(orderData))
+      localStorage.setItem('jbr_pending_checkout', 'true')
       sessionStorage.setItem('jbr_pending_checkout', 'true')
     } catch (e) {
       // ignore
@@ -919,7 +1046,9 @@ function Header({ t, lang, setLang, cartCount, onCartClick, activeSection }) {
   }, [cartCount])
 
   const toggleLanguage = () => {
-    setLang(lang === 'ar' ? 'en' : 'ar')
+    const list = ['ar', 'fr', 'en']
+    const nextIdx = (list.indexOf(lang) + 1) % list.length
+    setLang(list[nextIdx])
   }
 
   return (
@@ -1431,14 +1560,32 @@ function Footer({ t }) {
    ═══════════════════════════════════════════════════ */
 export default function App() {
   const [lang, setLang] = useState('ar')
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = localStorage.getItem('jbr_cart')
+      return saved ? JSON.parse(saved) : []
+    } catch (e) {
+      return []
+    }
+  })
   const [cartOpen, setCartOpen] = useState(false)
   const [toast, setToast] = useState(null)
   const [activeSection, setActiveSection] = useState('home')
   const [paymentSuccessModalOpen, setPaymentSuccessModalOpen] = useState(false)
   const [confirmedOrderId, setConfirmedOrderId] = useState('JBR-2026-98421')
+  const [purchasedItems, setPurchasedItems] = useState([])
+  const hasTriggeredSuccess = useRef(false)
 
-  const t = translations[lang]
+  const t = translations[lang] || translations.ar
+
+  /* Sync cart with localStorage */
+  useEffect(() => {
+    try {
+      localStorage.setItem('jbr_cart', JSON.stringify(cart))
+    } catch (e) {
+      // ignore
+    }
+  }, [cart])
 
   useEffect(() => {
     document.documentElement.dir = t.dir
@@ -1447,13 +1594,21 @@ export default function App() {
 
   /* Complete Post-Payment Success Return Flow */
   const triggerPaymentSuccessFlow = useCallback(
-    (customOrderId) => {
+    (customOrderId, orderItems = []) => {
       const generatedId =
         customOrderId || `JBR-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`
       setConfirmedOrderId(generatedId)
+      if (orderItems && orderItems.length > 0) {
+        setPurchasedItems(orderItems)
+      }
 
       // 1. Empty the cart completely (panier khawya)
       setCart([])
+      try {
+        localStorage.removeItem('jbr_cart')
+      } catch (e) {
+        // ignore
+      }
 
       // 2. Close cart drawer
       setCartOpen(false)
@@ -1470,49 +1625,135 @@ export default function App() {
         if (prodElem) {
           prodElem.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
-      }, 250)
+      }, 300)
     },
     [t.toast.paymentSuccess]
   )
 
-  /* Check for payment success return via URL query parameters or checkout return flag */
+  /* Check for payment success return via URL query parameters, Sadad invoice ID, hash, or checkout return flag */
   useEffect(() => {
+    if (hasTriggeredSuccess.current) return
+
     const params = new URLSearchParams(window.location.search)
-    const hash = window.location.hash
+    const hash = (window.location.hash || '').toLowerCase()
 
-    const isSuccessParam =
-      params.get('status') === 'success' ||
-      params.get('payment') === 'success' ||
-      params.get('paid') === 'true' ||
-      params.get('payment_status') === 'paid' ||
-      params.get('checkout') === 'success' ||
-      hash === '#payment-success'
+    // 1. Check all status query parameters case-insensitively
+    const statusVal = (params.get('status') || '').toLowerCase()
+    const paymentStatusVal = (params.get('payment_status') || '').toLowerCase()
+    const paymentVal = (params.get('payment') || '').toLowerCase()
+    const checkoutVal = (params.get('checkout') || '').toLowerCase()
+    const paidVal = (params.get('paid') || '').toLowerCase()
+    const resultVal = (params.get('result') || '').toLowerCase()
 
+    const hasSuccessStatus =
+      ['success', 'paid', 'completed', 'complete', 'captured', '1', 'true', 'ok'].includes(statusVal) ||
+      ['success', 'paid', 'completed', 'complete', 'captured', '1', 'true', 'ok'].includes(paymentStatusVal) ||
+      ['success', 'paid', 'true'].includes(paymentVal) ||
+      ['success', 'paid', 'true'].includes(checkoutVal) ||
+      ['true', '1', 'yes'].includes(paidVal) ||
+      ['success', 'captured', 'approved'].includes(resultVal)
+
+    // Sadad QA specific parameters (Sadad returns invoice_id, invoiceId, transaction_id, etc.)
+    const sadadInvoiceId =
+      params.get('invoice_id') ||
+      params.get('invoiceId') ||
+      params.get('InvoiceId') ||
+      params.get('transaction_id') ||
+      params.get('transactionId') ||
+      params.get('order_id') ||
+      params.get('orderId') ||
+      params.get('ref') ||
+      params.get('reference')
+
+    const hasSuccessHash =
+      hash === '#payment-success' ||
+      hash === '#success' ||
+      hash === '#paid'
+
+    // 2. Check pending checkout from localStorage/sessionStorage
     let hadPendingCheckout = false
+    let pendingOrderData = null
     try {
-      hadPendingCheckout = sessionStorage.getItem('jbr_pending_checkout') === 'true'
+      const storedFlag =
+        localStorage.getItem('jbr_pending_checkout') ||
+        sessionStorage.getItem('jbr_pending_checkout')
+      const storedOrder = localStorage.getItem('jbr_pending_order')
+      if (storedOrder) {
+        pendingOrderData = JSON.parse(storedOrder)
+      }
+      if (
+        storedFlag === 'true' &&
+        pendingOrderData &&
+        Date.now() - (pendingOrderData.timestamp || 0) < 2 * 60 * 60 * 1000
+      ) {
+        hadPendingCheckout = true
+      }
     } catch (e) {
       // ignore
     }
 
-    if (isSuccessParam || (hadPendingCheckout && (params.has('status') || params.has('payment')))) {
+    const isPaymentSuccess =
+      hasSuccessStatus ||
+      Boolean(sadadInvoiceId) ||
+      hasSuccessHash ||
+      (hadPendingCheckout &&
+        (params.has('status') ||
+          params.has('payment') ||
+          params.has('invoice_id') ||
+          hash.includes('product') ||
+          hash.includes('success')))
+
+    if (isPaymentSuccess) {
+      hasTriggeredSuccess.current = true
+
+      // Clean storage flags
       try {
+        localStorage.removeItem('jbr_pending_checkout')
+        localStorage.removeItem('jbr_pending_order')
         sessionStorage.removeItem('jbr_pending_checkout')
       } catch (e) {
         // ignore
       }
 
-      triggerPaymentSuccessFlow()
+      const finalOrderId =
+        sadadInvoiceId ||
+        pendingOrderData?.orderId ||
+        `JBR-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`
 
-      // Clean query params from URL cleanly without page refresh
-      const cleanUrl = new URL(window.location.href)
-      cleanUrl.searchParams.delete('status')
-      cleanUrl.searchParams.delete('payment')
-      cleanUrl.searchParams.delete('paid')
-      cleanUrl.searchParams.delete('payment_status')
-      cleanUrl.searchParams.delete('checkout')
-      if (cleanUrl.hash === '#payment-success') cleanUrl.hash = '#products'
-      window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.search + (cleanUrl.hash || ''))
+      const finalItems = pendingOrderData?.items || []
+
+      triggerPaymentSuccessFlow(finalOrderId, finalItems)
+
+      // Clean query parameters from URL cleanly without page refresh, pointing to #products
+      try {
+        const cleanUrl = new URL(window.location.href)
+        const paramsToRemove = [
+          'status',
+          'payment',
+          'paid',
+          'payment_status',
+          'checkout',
+          'invoice_id',
+          'invoiceId',
+          'InvoiceId',
+          'transaction_id',
+          'transactionId',
+          'order_id',
+          'orderId',
+          'ref',
+          'reference',
+          'result',
+        ]
+        paramsToRemove.forEach((p) => cleanUrl.searchParams.delete(p))
+        cleanUrl.hash = '#products'
+        window.history.replaceState(
+          {},
+          '',
+          cleanUrl.pathname + cleanUrl.search + cleanUrl.hash
+        )
+      } catch (e) {
+        // ignore
+      }
     }
   }, [triggerPaymentSuccessFlow])
 
@@ -1576,6 +1817,7 @@ export default function App() {
         onClose={() => setPaymentSuccessModalOpen(false)}
         t={t}
         orderId={confirmedOrderId}
+        purchasedItems={purchasedItems}
       />
 
       {/* Cart Modal / Drawer */}
