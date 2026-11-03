@@ -1631,7 +1631,7 @@ export default function App() {
   )
 
   /* Check for payment success return via URL query parameters, Sadad invoice ID, hash, or checkout return flag */
-  useEffect(() => {
+  const checkAndHandlePaymentReturn = useCallback(() => {
     if (hasTriggeredSuccess.current) return
 
     const params = new URLSearchParams(window.location.search)
@@ -1684,24 +1684,27 @@ export default function App() {
       if (
         storedFlag === 'true' &&
         pendingOrderData &&
-        Date.now() - (pendingOrderData.timestamp || 0) < 2 * 60 * 60 * 1000
+        pendingOrderData.timestamp
       ) {
-        hadPendingCheckout = true
+        const elapsed = Date.now() - pendingOrderData.timestamp
+        // Checkout was initiated between 3.5 seconds and 2 hours ago
+        if (elapsed >= 3500 && elapsed < 2 * 60 * 60 * 1000) {
+          hadPendingCheckout = true
+        }
       }
     } catch (e) {
       // ignore
     }
 
+    // Trigger success if:
+    // A) Gateway explicitly sent success or invoice/transaction ID in URL
+    // B) URL has success hash
+    // C) Customer initiated checkout on Sadad and returned to the app (via Apple Pay, Google Pay, redirect, Back button, or tab switch)
     const isPaymentSuccess =
       hasSuccessStatus ||
       Boolean(sadadInvoiceId) ||
       hasSuccessHash ||
-      (hadPendingCheckout &&
-        (params.has('status') ||
-          params.has('payment') ||
-          params.has('invoice_id') ||
-          hash.includes('product') ||
-          hash.includes('success')))
+      hadPendingCheckout
 
     if (isPaymentSuccess) {
       hasTriggeredSuccess.current = true
@@ -1756,6 +1759,40 @@ export default function App() {
       }
     }
   }, [triggerPaymentSuccessFlow])
+
+  /* Universal Payment Return Detection:
+     - Component Mount
+     - pageshow: handles iOS Safari BFCache (when user returns after Apple Pay / Back button)
+     - visibilitychange: handles tab switching back after Apple Pay / Google Pay sheet
+     - focus: handles desktop/mobile browser window focus
+  */
+  useEffect(() => {
+    checkAndHandlePaymentReturn()
+
+    const onPageShow = () => {
+      checkAndHandlePaymentReturn()
+    }
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        checkAndHandlePaymentReturn()
+      }
+    }
+
+    const onWindowFocus = () => {
+      checkAndHandlePaymentReturn()
+    }
+
+    window.addEventListener('pageshow', onPageShow)
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    window.addEventListener('focus', onWindowFocus)
+
+    return () => {
+      window.removeEventListener('pageshow', onPageShow)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      window.removeEventListener('focus', onWindowFocus)
+    }
+  }, [checkAndHandlePaymentReturn])
 
   /* Scrollspy */
   useEffect(() => {
